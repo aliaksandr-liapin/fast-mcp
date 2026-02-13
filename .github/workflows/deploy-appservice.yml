@@ -33,10 +33,10 @@ jobs:
           az webapp config container set \
             --name ${{ secrets.APP_SERVICE_NAME }} \
             --resource-group ${{ secrets.AZURE_RG }} \
-            --docker-custom-image-name ${{ secrets.ACR_LOGIN_SERVER }}/${{ env.IMAGE_NAME }}:${{ github.sha }} \
-            --docker-registry-server-url https://${{ secrets.ACR_LOGIN_SERVER }} \
-            --docker-registry-server-user ${{ secrets.ACR_USERNAME }} \
-            --docker-registry-server-password ${{ secrets.ACR_PASSWORD }}
+            --container-image-name ${{ secrets.ACR_LOGIN_SERVER }}/${{ env.IMAGE_NAME }}:${{ github.sha }} \
+            --container-registry-url https://${{ secrets.ACR_LOGIN_SERVER }} \
+            --container-registry-user ${{ secrets.ACR_USERNAME }} \
+            --container-registry-password ${{ secrets.ACR_PASSWORD }}
 
       - name: Ensure startup command
         run: |
