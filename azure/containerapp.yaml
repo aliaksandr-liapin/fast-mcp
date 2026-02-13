@@ -1,0 +1,33 @@
+name: fast-mcp-server
+location: eastus
+properties:
+  managedEnvironmentId: /subscriptions/<sub-id>/resourceGroups/<rg>/providers/Microsoft.App/managedEnvironments/<env>
+  configuration:
+    activeRevisionsMode: Single
+    ingress:
+      external: true
+      targetPort: 8000
+    registries: []
+    secrets: []
+  template:
+    containers:
+      - name: app
+        image: <registry>/fast-mcp-server:latest
+        env:
+          - name: APP_NAME
+            value: fast-mcp-server
+          - name: HOST
+            value: 0.0.0.0
+          - name: PORT
+            value: 8000
+          - name: LOG_LEVEL
+            value: INFO
+          - name: NEO4J_URI
+            value: bolt://<host>:7687
+          - name: NEO4J_USER
+            value: neo4j
+          - name: NEO4J_PASSWORD
+            value: <password>
+        resources:
+          cpu: 0.5
+          memory: 1Gi

@@ -1,0 +1,4 @@
+"Welcome to FastMCP 2.0!": https://gofastmcp.com/v2/getting-started/welcome
+"Official GitHub repo":https://github.com/jlowin/fastmcp
+
+python -m app.main
